@@ -17,9 +17,9 @@
 
 - Sunday
   - Start frontend and render data by calling API
-  - Learn about Gin + JWT for user authentication?
   - Add more endpoints
-    - User authentication
+    - Learn about Gin + JWT for user authentication?
+    - User CRUD (maybe if got time)
     - Update backend
 
 - Monday
