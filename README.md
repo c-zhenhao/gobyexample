@@ -2,12 +2,10 @@
 
 ## Planned schedule
 
-- Thurs + 0.5 Friday
-
+- Thurs + Friday
   - resources: https://gobyexample.com/
 
-- 0.5 Friday + Saturday
-
+- Saturday
   - Follow tutorial
   - Start on backend, try to finish  MVP endpoints
   - CRUD
@@ -18,7 +16,6 @@
       - By default, the page should show a paginated list of entries sorted in creasing alphabetical order i.e. (A-Z)
 
 - Sunday
-
   - Complete frontend
   - Finish endpoints, call API
   - Learn about Gin + JWT for user authentication?
