@@ -3,7 +3,7 @@ package main
 
 import "fmt"
 
-// as an example of a generic function, MapKeys takes a map and returns a slice of its keys. This function has two type paratmeters - K and V; K has the comparable constraint, meaning that we can compare values of this types with the == and != operators. This is required for map keys in Go. v has the any constraint, meaning that its not restricted in any way (any is an alias for interface{}).
+// as an example of a generic function, MapKeys takes a map and returns a slice of its keys. This function has two type parameters - K and V; K has the comparable constraint, meaning that we can compare values of this types with the == and != operators. This is required for map keys in Go. v has the any constraint, meaning that its not restricted in any way (any is an alias for interface{}).
 func MapKeys[K comparable, V any](m map[K]V) []K {
 	r := make([]K, 0, len(m))
 	for k := range m {
