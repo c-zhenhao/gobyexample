@@ -9,7 +9,7 @@
 - 0.5 Friday + Saturday
 
   - Follow tutorial
-  - Start on backend, try to finish endpoints
+  - Start on backend, try to finish  MVP endpoints
   - CRUD
     - Create - accept a name and corresponding phone number
     - Read - search for a phone number by entering part of the name
