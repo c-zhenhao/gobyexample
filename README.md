@@ -16,10 +16,11 @@
       - By default, the page should show a paginated list of entries sorted in creasing alphabetical order i.e. (A-Z)
 
 - Sunday
-  - Complete frontend
-  - Finish endpoints, call API
+  - Start frontend and render data by calling API
   - Learn about Gin + JWT for user authentication?
-  - Start frontend
+  - Add more endpoints
+    - User authentication
+    - Update backend
 
 - Monday
   - Complete frontend
