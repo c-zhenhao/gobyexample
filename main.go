@@ -61,6 +61,7 @@ func main() {
 		})
 	})
 
+	// get all products
 	app.Get("/api/products/frontend", func(c *fiber.Ctx) error {
 		collection := db.Collection("products")
 		ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -80,6 +81,7 @@ func main() {
 		return c.JSON(products)
 	})
 
+	// search by title and description and sort by price
 	app.Get("/api/products/backend", func(c *fiber.Ctx) error {
 		collection := db.Collection("products")
 		ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -87,19 +89,41 @@ func main() {
 		var products []Product
 
 		filter := bson.M{}
+		findOptions := options.Find()
 
+		// filter to reduce number of returned products
 		if s := c.Query("search"); s != "" {
 			filter = bson.M{
-				"title": bson.M{
-					"$regex": primitive.Regex{
-						Pattern: s,
-						Options: "i",
+				"$or": []bson.M{
+					{
+						"title": bson.M{
+							"$regex": primitive.Regex{
+								Pattern: s,
+								Options: "i",
+							},
+						},
+					},
+					{
+						"description": bson.M{
+							"$regex": primitive.Regex{
+								Pattern: s,
+								Options: "i",
+							},
+						},
 					},
 				},
 			}
 		}
 
-		cursor, _ := collection.Find(ctx, filter)
+		if sort := c.Query("sort"); sort != "" {
+			if sort == "asc" {
+				findOptions.SetSort(bson.D{{"price", 1}})
+			} else if sort == "desc" {
+				findOptions.SetSort(bson.D{{"price", -1}})
+			}
+		}
+
+		cursor, _ := collection.Find(ctx, filter, findOptions)
 		defer cursor.Close(ctx)
 
 		for cursor.Next(ctx) {
