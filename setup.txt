@@ -1,0 +1,8 @@
+- need to init the project first
+    - go mod init github.com/c-zhenhao/gobyexample
+- install stuff
+    - go get -u github.com/gofiber/fiber/v2
+    - go get -u github.com/gofiber/fiber/v2/middleware/cors
+    - go get -u go.mongodb.org/mongo-driver/mongo
+    - go get -u github.com/go-faker/faker/v4
+    
