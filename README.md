@@ -1,4 +1,4 @@
-## Learning Golang + planned
+## Learning Golang + plan
 
 ## Planned schedule
 
@@ -25,4 +25,13 @@
 
 - Monday
   - Complete frontend
-  - Look into Swagger and Elastic Kibana
+  - Look into Swagger and Elastic Kibana???
+  - https://seanrmurphy.medium.com/experimenting-with-full-stack-development-in-go-part-1-setting-the-scene-963adb40b189
+    - https://seanrmurphy.medium.com/go-frontend-backend-revisited-leveraging-swagger-on-the-frontend-caa60087d65b
+    - https://levelup.gitconnected.com/fullstack-go-adding-api-security-1b603ac2fa1d
+  - Golang Application Monitoring using Prometheus
+    - https://gabrieltanner.org/blog/collecting-prometheus-metrics-in-golang/
+  - Go microservices blog series byt Erik Lupander
+    - https://callistaenterprise.se/blogg/teknik/2017/02/17/go-blog-series-part1/ 
+  - API Security
+    - https://www.pingidentity.com/en/resources/blog/post/complete-guide-to-api-security.html
