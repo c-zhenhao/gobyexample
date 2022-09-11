@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"math"
 	"math/rand"
 	"strconv"
 	"time"
@@ -127,6 +128,8 @@ func main() {
 		page, _ := strconv.Atoi(c.Query("page", "1")) // default page is 1
 		var perPage int64 = 9
 
+		total, _ := collection.CountDocuments(ctx, filter)
+
 		findOptions.SetSkip((int64(page) - 1) * perPage) // 0-9, 9-18, 18-27, etc..
 		findOptions.SetLimit(perPage)                    // 9
 
@@ -139,7 +142,12 @@ func main() {
 			products = append(products, product)
 		}
 
-		return c.JSON(products)
+		return c.JSON(fiber.Map{
+			"total":     total,
+			"page":      page,
+			"last_page": math.Ceil(float64(total) / float64(perPage)),
+			"data":      products,
+		})
 	})
 
 	app.Listen(":8000")
