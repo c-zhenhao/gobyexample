@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"math/rand"
+	"strconv"
+	"time"
 
 	"github.com/go-faker/faker/v4"
 
@@ -13,9 +16,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-
-	"math/rand"
-	"time"
 )
 
 type Product struct {
@@ -122,6 +122,13 @@ func main() {
 				findOptions.SetSort(bson.D{{"price", -1}})
 			}
 		}
+
+		// pagination
+		page, _ := strconv.Atoi(c.Query("page", "1")) // default page is 1
+		var perPage int64 = 9
+
+		findOptions.SetSkip((int64(page) - 1) * perPage) // 0-9, 9-18, 18-27, etc..
+		findOptions.SetLimit(perPage)                    // 9
 
 		cursor, _ := collection.Find(ctx, filter, findOptions)
 		defer cursor.Close(ctx)
